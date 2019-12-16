@@ -1,6 +1,6 @@
 #!/bin/sh
 
-### Thing/XxxXx (in templates or App) -> templates/thing/xxx_xx
+### Thing/XxxXx (for no namespace only) -> thing/xxx_xx
 
 if [ $# -eq 0 ]
 then # set default locations
@@ -9,9 +9,7 @@ fi
 
 grep -rl '[A-Z][^( ]*twig' "$@" | xargs -r -d '\n' -- sed -i '
   /twig/ {
-    /@[B-Z]/ b
-    /@A[^p][^p]\// b
-    s/A\([^( ]*.twig\)/_a\1/g
+    /@[A-Z]/ b
     s/A\([^( ]*.twig\)/_a\1/g
     s/B\([^( ]*.twig\)/_b\1/g
     s/C\([^( ]*.twig\)/_c\1/g
@@ -41,7 +39,6 @@ grep -rl '[A-Z][^( ]*twig' "$@" | xargs -r -d '\n' -- sed -i '
 
     T
     s/\([^a-z]\)_/\1/g
-    s_@app/_@App/_
   }
 '
 

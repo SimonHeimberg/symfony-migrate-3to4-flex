@@ -5,14 +5,11 @@
 
 if [ $# -eq 0 ]
 then # set default locations
-    set -- src/AppBundle/Resources/views
+    set -- src/AppBundle/Resources/views templates/
 fi
 
 snakeCase() {
   sed '
-    s/$/\t/
-    #p
-    s/\t$//
     s_src/AppBundle/Resources/views/_templates/_
     s/A\([^ ]*.twig\)/_a\1/g
     s/B\([^ ]*.twig\)/_b\1/g
