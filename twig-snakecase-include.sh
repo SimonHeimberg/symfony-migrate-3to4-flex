@@ -7,7 +7,8 @@ then # set default locations
     set -- src/ templates/ config/
 fi
 
-grep -rl '[A-Z][^( ]*twig' "$@" | xargs -r -d '\n' -- sed -i '
+partialSnakeCase() {
+ xargs -r -d '\n' -- sed -i '
   /twig/ {
     /@[A-Z]/ b
     s/A\([^( ]*.twig\)/_a\1/g
@@ -40,6 +41,23 @@ grep -rl '[A-Z][^( ]*twig' "$@" | xargs -r -d '\n' -- sed -i '
     T
     s/\([^a-z]\)_/\1/g
   }
-'
+ '
+}
 
-echo ' please rerun until no more changes happen'
+done=''
+for i in $(seq 10)
+do
+  if files=$(grep -rl '[A-Z][^( ]*twig' "$@")
+  then
+    printf "%s" "$files" | partialSnakeCase
+  else
+    done=$i # set to anything
+    break
+  fi
+done
+
+if [ -z "$done" ]
+then
+  echo ' please rerun until no more changes happen'
+  return 11 || exit 11
+fi
