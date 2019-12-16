@@ -46,14 +46,14 @@ snakeCase() {
   '
 }
 
-git ls-files "$@" | while read filename
+git ls-files "$@" | while read -r filename
 do
     tmp=$filename
-    new=$(echo $tmp | snakeCase)
-    while [ $tmp != $new ]
+    new=$(echo "$tmp" | snakeCase)
+    while [ "$tmp" != "$new" ]
     do
         tmp=$new
-        new=$(echo $tmp | snakeCase)
+        new=$(echo "$tmp" | snakeCase)
     done
     mkdir -p "$(dirname "$new")"
     git mv -v -- "$filename" "$new"
