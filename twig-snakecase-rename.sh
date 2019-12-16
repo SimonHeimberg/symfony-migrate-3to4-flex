@@ -1,5 +1,8 @@
 #!/bin/sh
 
+### git mv src/AppBundle/Resources/views/Thing/XxxXx -> templates/thing/xxx_xx
+### git mv templates/Thing/XxxXx -> templates/thing/xxx_xx
+
 if [ $# -eq 0 ]
 then # set default locations
     set -- src/AppBundle/Resources/views

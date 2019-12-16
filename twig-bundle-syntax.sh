@@ -1,5 +1,7 @@
 #!/bin/sh
 
+### twig: Xxx:... -> @Xxx/...
+
 if [ $# -eq 0 ]
 then # set default locations
     set -- src/ templates/ config/

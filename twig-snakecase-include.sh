@@ -1,5 +1,7 @@
 #!/bin/sh
 
+### Thing/XxxXx (in templates or App) -> templates/thing/xxx_xx
+
 if [ $# -eq 0 ]
 then # set default locations
     set -- src/ templates/ config/
