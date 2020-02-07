@@ -11,7 +11,9 @@ partialSnakeCase() {
  match='[^( ]*.twig'
  xargs -r -d '\n' -- sed -i '
   /twig/ {
+    # skip bundles:
     /@[A-Z]/ b
+    # to snake case
     s/A\('"$match"'\)/_a\1/g
     s/B\('"$match"'\)/_b\1/g
     s/C\('"$match"'\)/_c\1/g
@@ -39,7 +41,9 @@ partialSnakeCase() {
     s/Y\('"$match"'\)/_y\1/g
     s/Z\('"$match"'\)/_z\1/g
 
+    # next input line when nothing changed (avoid unrelated modifications):
     T
+    # simple lowercase when not following a lowercase character:
     s/\([^a-z]\)_/\1/g
   }
  '

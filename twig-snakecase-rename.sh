@@ -10,8 +10,11 @@ fi
 
 snakeCase() {
   sed '
+    # skip files overwriting bundles:
     /templates\/bundles/ b
+    # move from old place:
     s_src/AppBundle/Resources/views/_templates/_
+    # to snake case:
     s/A\([^ ]*.twig\)/_a\1/g
     s/B\([^ ]*.twig\)/_b\1/g
     s/C\([^ ]*.twig\)/_c\1/g
@@ -39,7 +42,9 @@ snakeCase() {
     s/Y\([^ ]*.twig\)/_y\1/g
     s/Z\([^ ]*.twig\)/_z\1/g
 
+    # simple lowercase when not after a lowercase character
     s/\([^a-z]\)_/\1/g
+    # simple lowercase when at start
     s/^_//g
   '
 }
