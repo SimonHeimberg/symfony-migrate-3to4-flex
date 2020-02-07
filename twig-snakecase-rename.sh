@@ -53,6 +53,11 @@ do
         tmp=$new
         new=$(echo "$tmp" | snakeCase)
     done
+    if [ "$filename" = "$new" ]
+    then
+        # echo skip $filename, no change
+        continue
+    fi
     mkdir -p "$(dirname "$new")"
     git mv -v -- "$filename" "$new"
 done
