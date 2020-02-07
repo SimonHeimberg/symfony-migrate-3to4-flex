@@ -8,35 +8,36 @@ then # set default locations
 fi
 
 partialSnakeCase() {
+ match='[^( ]*.twig'
  xargs -r -d '\n' -- sed -i '
   /twig/ {
     /@[A-Z]/ b
-    s/A\([^( ]*.twig\)/_a\1/g
-    s/B\([^( ]*.twig\)/_b\1/g
-    s/C\([^( ]*.twig\)/_c\1/g
-    s/D\([^( ]*.twig\)/_d\1/g
-    s/E\([^( ]*.twig\)/_e\1/g
-    s/F\([^( ]*.twig\)/_f\1/g
-    s/G\([^( ]*.twig\)/_g\1/g
-    s/H\([^( ]*.twig\)/_h\1/g
-    s/I\([^( ]*.twig\)/_i\1/g
-    s/J\([^( ]*.twig\)/_j\1/g
-    s/K\([^( ]*.twig\)/_k\1/g
-    s/L\([^( ]*.twig\)/_l\1/g
-    s/M\([^( ]*.twig\)/_m\1/g
-    s/N\([^( ]*.twig\)/_n\1/g
-    s/O\([^( ]*.twig\)/_o\1/g
-    s/P\([^( ]*.twig\)/_p\1/g
-    s/Q\([^( ]*.twig\)/_q\1/g
-    s/R\([^( ]*.twig\)/_r\1/g
-    s/S\([^( ]*.twig\)/_s\1/g
-    s/T\([^( ]*.twig\)/_t\1/g
-    s/U\([^( ]*.twig\)/_u\1/g
-    s/V\([^( ]*.twig\)/_v\1/g
-    s/W\([^( ]*.twig\)/_w\1/g
-    s/X\([^( ]*.twig\)/_x\1/g
-    s/Y\([^( ]*.twig\)/_y\1/g
-    s/Z\([^( ]*.twig\)/_z\1/g
+    s/A\('"$match"'\)/_a\1/g
+    s/B\('"$match"'\)/_b\1/g
+    s/C\('"$match"'\)/_c\1/g
+    s/D\('"$match"'\)/_d\1/g
+    s/E\('"$match"'\)/_e\1/g
+    s/F\('"$match"'\)/_f\1/g
+    s/G\('"$match"'\)/_g\1/g
+    s/H\('"$match"'\)/_h\1/g
+    s/I\('"$match"'\)/_i\1/g
+    s/J\('"$match"'\)/_j\1/g
+    s/K\('"$match"'\)/_k\1/g
+    s/L\('"$match"'\)/_l\1/g
+    s/M\('"$match"'\)/_m\1/g
+    s/N\('"$match"'\)/_n\1/g
+    s/O\('"$match"'\)/_o\1/g
+    s/P\('"$match"'\)/_p\1/g
+    s/Q\('"$match"'\)/_q\1/g
+    s/R\('"$match"'\)/_r\1/g
+    s/S\('"$match"'\)/_s\1/g
+    s/T\('"$match"'\)/_t\1/g
+    s/U\('"$match"'\)/_u\1/g
+    s/V\('"$match"'\)/_v\1/g
+    s/W\('"$match"'\)/_w\1/g
+    s/X\('"$match"'\)/_x\1/g
+    s/Y\('"$match"'\)/_y\1/g
+    s/Z\('"$match"'\)/_z\1/g
 
     T
     s/\([^a-z]\)_/\1/g
