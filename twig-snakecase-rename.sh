@@ -10,6 +10,7 @@ fi
 
 snakeCase() {
   sed '
+    /templates\/bundles/ b
     s_src/AppBundle/Resources/views/_templates/_
     s/A\([^ ]*.twig\)/_a\1/g
     s/B\([^ ]*.twig\)/_b\1/g
